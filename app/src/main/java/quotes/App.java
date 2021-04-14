@@ -22,8 +22,8 @@ public class App {
 //        Quotes convertedObject=gson.fromJson(reader,Quotes.class);//
 
         App[] convertedArray=gson.fromJson(reader,App[].class);
-
-        System.out.println(convertedArray);
+        System.out.println();
+        System.out.println(convertedArray[5]);
 
     }
 }
