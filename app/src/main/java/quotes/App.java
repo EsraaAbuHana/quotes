@@ -21,7 +21,7 @@ public class App {
         Reader reader=new FileReader("app/src/main/resources/recentquotes.json");
 //        Quotes convertedObject=gson.fromJson(reader,Quotes.class);//
 
-        App[] convertedArray=gson.fromJson(reader,App[].class);
+        Quotes[] convertedArray=gson.fromJson(reader,Quotes[].class);
         System.out.println();
         System.out.println(convertedArray[5]);
 
