@@ -4,11 +4,37 @@
 package quotes;
 
 import org.junit.Test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import static org.junit.Assert.*;
+import static quotes.App.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
+
+    @Test
+    public void testQuotes() throws IOException {
+
         App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        Quotes[] quotes = classUnderTest.getAllQuotes();
+
+        String apiURL="http://ron-swanson-quotes.herokuapp.com/v2/quotes";
+
+        Quotes[] convertedArray=getAllQuotes();
+        System.out.println(convertedArray);
+
+        Quotes randomQuote=convertedArray[(int) (Math.random()*convertedArray.length)] ;
+        System.out.println(randomQuote);
+//        URL url = new URL(apiURL);
+//        String jsonData = getJsonFromAPI(url);
+//        Quotes formismaticQuote = getFormismaticQuoteAsObject(jsonData);
+//        addToJsonFile(formismaticQuote);
+        Quotes[] test=getAllQuotes();
+//        System.out.println(formismaticQuote);
+        System.out.println(test[test.length-1]);
+        System.out.println(test.length);
+        assertTrue(true);
     }
 }

@@ -1,16 +1,5 @@
 package quotes;
 
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.Buffer;
-import java.security.cert.TrustAnchor;
 
 public class Quotes {
 
@@ -49,7 +38,6 @@ public class Quotes {
         this.text = text;
     }
 
-    ///lab 09**************************************************
 
 
 
