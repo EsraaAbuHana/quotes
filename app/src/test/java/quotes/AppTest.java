@@ -5,36 +5,48 @@ package quotes;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import static quotes.App.*;
 
 public class AppTest {
+    @Test
+    public void testConstructor(){
+        Quotes quote = new Quotes("someone", "helllo");
+
+        assertEquals( "someone", quote.getAuthor());
+        assertEquals( "helllo", quote.getText());
+    }
 
     @Test
     public void testQuotes() throws IOException {
 
-        App classUnderTest = new App();
-        Quotes[] quotes = classUnderTest.getAllQuotes();
-
-        String apiURL="http://ron-swanson-quotes.herokuapp.com/v2/quotes";
-
         Quotes[] convertedArray=getAllQuotes();
-        System.out.println(convertedArray);
-
+        System.out.println(convertedArray.length);
         Quotes randomQuote=convertedArray[(int) (Math.random()*convertedArray.length)] ;
         System.out.println(randomQuote);
-//        URL url = new URL(apiURL);
-//        String jsonData = getJsonFromAPI(url);
-//        Quotes formismaticQuote = getFormismaticQuoteAsObject(jsonData);
-//        addToJsonFile(formismaticQuote);
+        assertNotNull(convertedArray);
+    }
+
+
+    @Test
+    public void testAddQuote() throws IOException {
+        String apiURL="http://ron-swanson-quotes.herokuapp.com/v2/quotes";
+        Quotes[] convertedArray=getAllQuotes();
+
+        Quotes randomQuote=convertedArray[(int) (Math.random()*convertedArray.length)] ;
+        URL url = new URL(apiURL);
+        String jsonData = getJsonFromAPI(url);
+        Quotes formismaticQuote = getFormismaticQuoteAsObject(jsonData);
+        addToJsonFile(formismaticQuote);
         Quotes[] test=getAllQuotes();
-//        System.out.println(formismaticQuote);
+        System.out.println(formismaticQuote);
         System.out.println(test[test.length-1]);
-        System.out.println(test.length);
-        assertTrue(true);
+        assertEquals("the new qute should be the last one have benn added",formismaticQuote.toString(),test[test.length-1].toString());
+
     }
 }

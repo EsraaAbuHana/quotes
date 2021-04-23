@@ -44,11 +44,18 @@ public class App {
 
     }
     public static  Quotes[] getAllQuotes(){
-
+        final File f = new File(App.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        String path = "../app/src/main/resources/recentquotes.json";
+        System.out.println(f);
+        if (f.compareTo(new File("C:\\Users\\user\\401\\quotes\\app\\build\\classes\\java\\main")) != 0){
+            path = "../src/main/resources/recentquotes.json";
+        };
         try{
             Gson gson=new Gson();
             String[] arrayOfQuotes;
-            Reader reader=new FileReader("app/src/main/resources/recentquotes.json");
+//            Reader reader=new FileReader("../app/src/main/resources/recentquotes.json");
+            Reader reader=new FileReader(path);
+
             Quotes[] convertedArray=gson.fromJson(reader,Quotes[].class);
             return  convertedArray;
         }catch (Exception ex){
@@ -65,8 +72,13 @@ try {
     Collections.addAll(list1, listOfQuotes);
     System.out.println(list1);
     list1.add(quotes);
-
-    try (Writer writer = new FileWriter("app/src/main/resources/recentquotes.json")) {
+    final File f = new File(App.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+    String path = "../app/src/main/resources/recentquotes.json";
+    System.out.println(f);
+    if (f.compareTo(new File("C:\\Users\\user\\401\\quotes\\app\\build\\classes\\java\\main")) != 0){
+        path = "../src/main/resources/recentquotes.json" ;
+    };
+    try (Writer writer = new FileWriter(path)) {
         Gson gson = new GsonBuilder().create();
         gson.toJson(list1, writer);
     }
@@ -113,7 +125,6 @@ try {
         return new BufferedReader(inputStreamReader);
     }
 
-//
     static Quotes getFormismaticQuoteAsObject(String jsonData) {
         Gson gson = new Gson();
         String[] formismaticQuote = gson.fromJson(jsonData, String[].class);
