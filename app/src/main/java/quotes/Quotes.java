@@ -2,6 +2,13 @@ package quotes;
 
 
 public class Quotes {
+    private String author;
+    private String text;
+    public Quotes(){}
+    public Quotes(String author, String text) {
+        this.author = author;
+        this.text = text;
+    }
 
     @Override
     public String toString() {
@@ -11,10 +18,6 @@ public class Quotes {
                 '}';
     }
 
-    String author;
-    String text;
-// String[] ArrayOfQuotes;
-//ArrayList<String>quotesArray;
 
 
     public String getAuthor() {
@@ -33,10 +36,7 @@ public class Quotes {
         this.text = text;
     }
 
-    public Quotes(String author, String text) {
-        this.author = author;
-        this.text = text;
-    }
+
 
 
 
